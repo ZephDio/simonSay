@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Simon Says</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet"> 
+    </head>
+
+    <body>
+        <header>
+
+            <h1>Simon Says...</h1>
+
+        </header>
+
+        <main>
+                <div class="component" id="app">
+                    <h2>{{game.acctualLevel+1}}</h2>
+                    <div class="flex">
+                    <bouton  v-for="item in game.plateau.squareGrid" 
+                             v-bind:style="{marginTop: item.square.margin + 'px',width: item.square.width + 'px', height : item.square.width + 'px' , backgroundColor : item.square.color}" 
+                             v-bind:y=item.position.y
+                             v-bind:x=item.position.x
+                             @trigger="input"></bouton>
+                    </div>
+                    <div>
+                        <div v-if="game.played === false">
+                            <button class="startRestart" v-on:click="startRestartButton">START THE GAME</button>
+                        </div>
+                        <div v-else>
+                            <button class="startRestart" v-on:click="startRestartButton">RESTART</button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+        </main>
+
+        <footer>
+
+
+
+
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="js/square.js"></script>
+        <script src="js/plateau.js"></script>
+        <script src="js/levels.js"></script>
+        <script src="js/game.js"></script>
+        <script type="module" src="js/render.js"></script>
+        
+    </body>
+</html>
